@@ -10,19 +10,20 @@ import (
 
 func signup(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("signup関数実行")
+	fmt.Println(r)
 	w.Write([]byte("successfully called signup"))
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("login関数実行")
+	fmt.Println(r)
 	w.Write([]byte("successfully called login"))
 }
-
 
 func main() {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/singup", signup).Methods("POST")
+	r.HandleFunc("/signup", signup).Methods("POST")
 	r.HandleFunc("/login", login).Methods("POST")
 
 	log.Println("サーバー起動 : 8000 port で受信")
