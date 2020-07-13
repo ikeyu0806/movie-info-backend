@@ -5,3 +5,15 @@ services:
     ports:
       - "3002:3002"
     container_name: golang_backend
+    depends_on:
+      - mysql
+  mysql:
+    build: ./mysql/
+    ports:
+      - "3003:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      TZ: "Asia/Tokyo"
+    volumes:
+      - "./mysql/data:/var/lib/mysql"
+      - "./mysql/init:/docker-entrypoint-initdb.d"
