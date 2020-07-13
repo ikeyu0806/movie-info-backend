@@ -1,0 +1,7 @@
+version: '3'
+services:
+  golang:
+    build: ./golang/
+    ports:
+      - "3002:3002"
+    container_name: golang_backend
