@@ -1,19 +1,22 @@
 version: '3'
 services:
   golang:
-    build: ./golang/
+    build: ./
     ports:
-      - "3002:3002"
+      - "3002:8080"
     container_name: golang_backend
+    volumes:
+      - "./:/workspace/golang_backend/"
     depends_on:
       - mysql
   mysql:
-    build: ./mysql/
+    build: ./db/
     ports:
       - "3003:3306"
     environment:
       MYSQL_ROOT_PASSWORD: pass
       TZ: "Asia/Tokyo"
+    container_name: movie_mysql
     volumes:
-      - "./mysql/data:/var/lib/mysql"
-      - "./mysql/init:/docker-entrypoint-initdb.d"
+      - "./db/data:/var/lib/mysql"
+      - "./db/init:/docker-entrypoint-initdb.d"

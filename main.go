@@ -1,4 +1,4 @@
-package demo
+package main
 
 import (
 	"log"
@@ -50,8 +50,8 @@ func main() {
 	r.HandleFunc("/signup", QueryStringHandler)
 	r.HandleFunc("/login", login).Methods("POST")
 
-	log.Println("start server : 3002 port")
-	log.Fatal(http.ListenAndServe(":3002",
+	log.Println("start server : 3002:8080 port（host:vm）")
+	log.Fatal(http.ListenAndServe(":8080",
 		handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}),
 									handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}),
 									handlers.AllowedOrigins([]string{"*"}))(r)))

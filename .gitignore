@@ -1,2 +1,2 @@
 movie-info-backend
-mysql/data/**/*
+db/data/**/*
