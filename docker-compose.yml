@@ -17,6 +17,7 @@ services:
       MYSQL_ROOT_PASSWORD: pass
       TZ: "Asia/Tokyo"
     container_name: movie_mysql
+    hostname: movie_mysql
     volumes:
       - "./db/data:/var/lib/mysql"
       - "./db/init:/docker-entrypoint-initdb.d"
