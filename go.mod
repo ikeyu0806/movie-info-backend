@@ -14,10 +14,4 @@ require (
 	github.com/kylelemons/go-gypsy v0.0.0-20160905020020-08cad365cd28 // indirect
 	github.com/lib/pq v1.7.0
 	github.com/ziutek/mymysql v1.5.4 // indirect
-	local.packages/db v0.0.0-00010101000000-000000000000
-	local.packages/server v0.0.0-00010101000000-000000000000
 )
-
-replace local.packages/db => ./db
-
-replace local.packages/server => ./server
