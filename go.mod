@@ -15,3 +15,5 @@ require (
 	github.com/lib/pq v1.7.0
 	github.com/ziutek/mymysql v1.5.4 // indirect
 )
+
+replace ikeyu0806/db => github.com/ikeyu0806/movie-info-backend/db v0.0.0-20200715072438-137b842e20f0
