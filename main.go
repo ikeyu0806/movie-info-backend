@@ -1,8 +1,8 @@
 package main
 
 import (
-	"local.packages/db"
-	"local.packages/server"
+	"github.com/ikeyu0806/movie-info-backend/db"
+	"github.com/ikeyu0806/movie-info-backend/server"
 )
 
 func main() {
