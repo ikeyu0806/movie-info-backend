@@ -2,7 +2,7 @@ package models
 
 import (
 	"errors"
-	"github.com/ikeyu0806/movie-info-backend/db"
+	"ikeyu0806/db"
 	"github.com/ikeyu0806/movie-info-backend/forms"
 )
 
