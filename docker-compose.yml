@@ -15,6 +15,7 @@ services:
       - "3003:3306"
     environment:
       MYSQL_ROOT_PASSWORD: pass
+      GOROOT: /workspace/golang_backend
       TZ: "Asia/Tokyo"
     container_name: movie_mysql
     hostname: movie_mysql
