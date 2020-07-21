@@ -1,2 +1,3 @@
 movie-info-backend
 db/data/**/*
+src/**/*

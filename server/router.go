@@ -2,7 +2,7 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/ikeyu0806/movie-info-backend/controllers"
+	"movie-info-backend/controllers"
 )
 
 func NewRouter() *gin.Engine {
