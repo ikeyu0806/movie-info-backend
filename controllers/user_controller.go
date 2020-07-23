@@ -1,16 +1,19 @@
-package controller
+package user
 
 import (
     "fmt"
-    "github.com/gin-gonic/gin"
+		"github.com/gin-gonic/gin"
+		// "github.com/ikeyu0806/movie-info-backend/models"
+		"net/http"
 )
 
 type Controller struct{}
 
 func (pc Controller) Create(c *gin.Context) {
-	fmt.Println(c)
-	// var s user.Service
-	// p, err := s.CreateModel(c)
+	fmt.Println("exec signup function")
+	c.JSON(http.StatusOK, "foo")
+	// var s models.UserModel
+	// p, err := s.CreateUser(c)
 
 	// if err != nil {
 	// 		c.AbortWithStatus(400)

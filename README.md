@@ -10,8 +10,13 @@
 
 ## DB Migration
 
+マイグレーションファイル作成
 ```
 docker-compose exec golang goose create createReviews sql
+```
+
+マイグレーション実行
+```
 docker-compose exec golang goose up
 ```
 

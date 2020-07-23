@@ -1,9 +1,15 @@
 package db
 
 import (
-		"log"
+    "log"
     "github.com/jinzhu/gorm"
     _ "github.com/jinzhu/gorm/dialects/mysql"
+)
+
+
+var (
+  db  *gorm.DB
+  err error
 )
 
 func gormConnect() *gorm.DB {
@@ -26,4 +32,8 @@ func gormConnect() *gorm.DB {
 func Init() {
   db := gormConnect()
   defer db.Close()
+}
+
+func GetDB() *gorm.DB {
+  return db
 }

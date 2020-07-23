@@ -1,15 +1,14 @@
 package server
 
 import (
-	"net/http"
-	"log"
 	"time"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
+	"github.com/ikeyu0806/movie-info-backend/controllers"
 )
 
 func Init() {
-	r := gin.Default()
+	r := router()
 
 	r.Use(cors.New(cors.Config{
 
@@ -34,11 +33,18 @@ func Init() {
 				"http://localhost:3001",
 		},
 		MaxAge: 24 * time.Hour,
-}))
-
-	r.POST("/signup", func(c *gin.Context) {
-		log.Println("exec signup function")
-		c.JSON(http.StatusOK, "foo")
-	})
+	}))
 	r.Run(":8080")
+}
+
+func router() *gin.Engine {
+	r := gin.Default()
+	
+	s := r.Group("/signup")
+	{
+		ctrl := user.Controller{}
+		s.POST("", ctrl.Create)
+	}
+
+	return r
 }

@@ -5,7 +5,7 @@ CREATE TABLE users (
     id integer UNIQUE NOT NULL,
     public_id integer UNIQUE NOT NULL,
     name varchar(255) UNIQUE NOT NULL,
-    encrypted_password varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
     PRIMARY KEY(id)
 );
 
