@@ -6,11 +6,16 @@ import (
     _ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-
 var (
   db  *gorm.DB
   err error
 )
+
+type User struct {
+	ID        uint
+	Name      string
+	Password  string
+}
 
 func gormConnect() *gorm.DB {
   DBMS     := "mysql"
@@ -26,13 +31,14 @@ func gormConnect() *gorm.DB {
     panic(err.Error())
   }
   log.Println("connect mysql")
+  db.Create(&User{ID: 1, Name: "test", Password: "pass"})
   return db
 }
 
 func Init() {
   db := gormConnect()
   defer db.Close()
-}
+} 
 
 func GetDB() *gorm.DB {
   return db
