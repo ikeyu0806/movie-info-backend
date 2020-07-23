@@ -17,16 +17,16 @@ type UserModel struct{}
 
 func (s UserModel) CreateUser(c *gin.Context) (User, error) {
 	db := db.GetDB()
-	db.Create(&User{Name: "test", Password: "pass"})
+
 	var u User
 
-	// if err := c.BindJSON(&u); err != nil {
-	// 		return u, err
-	// }
+	if err := c.ShouldBindJSON(&u); err != nil {
+			return u, err
+	}
 
-	// if err := db.Create(&u).Error; err != nil {
-	// 		return u, err
-	// }
+	if err := db.Create(&u).Error; err != nil {
+			return u, err
+	}
 
 	return u, nil
 }
