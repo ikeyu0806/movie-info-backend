@@ -31,7 +31,6 @@ func gormConnect() *gorm.DB {
     panic(err.Error())
   }
   log.Println("connect mysql")
-  db.Create(&User{ID: 1, Name: "test", Password: "pass"})
   return db
 }
 
@@ -41,5 +40,18 @@ func Init() {
 } 
 
 func GetDB() *gorm.DB {
+  DBMS     := "mysql"
+  USER     := "root"
+  PASS     := "pass"
+  PROTOCOL := "tcp(movie_mysql:3306)"
+  DBNAME   := "movie_info"
+
+  CONNECT := USER+":"+PASS+"@"+PROTOCOL+"/"+DBNAME
+  db,err := gorm.Open(DBMS, CONNECT)
+
+  if err != nil {
+    panic(err.Error())
+  }
+  log.Println("connect mysql")
   return db
 }
