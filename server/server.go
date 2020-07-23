@@ -13,24 +13,25 @@ func Init() {
 	r.Use(cors.New(cors.Config{
 
 		AllowMethods: []string{
-				"POST",
-				"GET",
-				"OPTIONS",
-				"PUT",
-				"DELETE",
+			"POST",
+			"GET",
+			"OPTIONS",
+			"PUT",
+			"DELETE",
 		},
 
 		AllowHeaders: []string{
-				"Access-Control-Allow-Headers",
-				"Content-Type",
-				"Content-Length",
-				"Accept-Encoding",
-				"X-CSRF-Token",
-				"Authorization",
+			"Access-Control-Allow-Origin",			
+			"Access-Control-Allow-Headers",
+			"Content-Type",
+			"Content-Length",
+			"Accept-Encoding",
+			"X-CSRF-Token",
+			"Authorization",
 		},
 
 		AllowOrigins: []string{
-				"http://localhost:3001",
+			"http://localhost:3001",
 		},
 		MaxAge: 24 * time.Hour,
 	}))
@@ -39,6 +40,32 @@ func Init() {
 
 func router() *gin.Engine {
 	r := gin.Default()
+
+	r.Use(cors.New(cors.Config{
+
+		AllowMethods: []string{
+			"POST",
+			"GET",
+			"OPTIONS",
+			"PUT",
+			"DELETE",
+		},
+
+		AllowHeaders: []string{
+			"Access-Control-Allow-Origin",			
+			"Access-Control-Allow-Headers",
+			"Content-Type",
+			"Content-Length",
+			"Accept-Encoding",
+			"X-CSRF-Token",
+			"Authorization",
+		},
+
+		AllowOrigins: []string{
+			"http://localhost:3001",
+		},
+		MaxAge: 24 * time.Hour,
+	}))
 	
 	s := r.Group("/signup")
 	{
