@@ -45,7 +45,7 @@ func router() *gin.Engine {
 	s := r.Group("/signup")
 	{
 		ctrl := user.Controller{}
-		s.POST("", ctrl.Create)
+		s.POST("", ctrl.SignUp)
 	}
 
 	return r

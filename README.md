@@ -11,12 +11,12 @@
 ## DB Migration
 
 マイグレーションファイル作成
-```
+```bash
 docker-compose exec golang goose create createReviews sql
 ```
 
 マイグレーション実行
-```
+```bash
 docker-compose exec golang goose up
 ```
 
