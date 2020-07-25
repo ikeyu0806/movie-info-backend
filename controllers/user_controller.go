@@ -37,3 +37,7 @@ func (pc Controller) SignUp(c *gin.Context) {
 		c.JSON(201, gin.H{"token": tokenString})
 	}
 }
+
+func (pc Controller) Login(c *gin.Context) {
+	fmt.Println("exec login function")
+}
