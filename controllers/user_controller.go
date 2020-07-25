@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/davecgh/go-spew/spew"
 	"github.com/ikeyu0806/movie-info-backend/models"
 )
 
@@ -25,8 +24,6 @@ func (pc Controller) SignUp(c *gin.Context) {
 		"iat": time.Now(),
 		"exp": time.Now().Add(time.Hour * 24).Unix(),
 	})
-
-	spew.Dump(token)
 
 	tokenString, err := token.SignedString([]byte(secret))
 
