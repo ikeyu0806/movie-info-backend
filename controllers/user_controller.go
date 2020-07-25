@@ -17,7 +17,7 @@ func (pc Controller) SignUp(c *gin.Context) {
 	var s models.UserModel
 	s.CreateUser(c)
 
-	secret := "secret"
+	secret := "safgvrebwabrq"
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"admin": true,
