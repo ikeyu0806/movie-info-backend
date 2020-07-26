@@ -31,7 +31,6 @@ func (pc Controller) SignUp(c *gin.Context) {
 
 	if err != nil {
 		c.AbortWithStatus(500)
-		fmt.Println("52")
 		fmt.Println(err)
 	} else {
 		c.JSON(201, gin.H{"token": tokenString})
@@ -40,4 +39,14 @@ func (pc Controller) SignUp(c *gin.Context) {
 
 func (pc Controller) Login(c *gin.Context) {
 	fmt.Println("exec login function")
+
+	var s models.UserModel
+	u, err := s.GetByName("ikeyu0806")
+
+	if err != nil {
+		c.AbortWithStatus(500)
+		fmt.Println(err)
+	} else {
+		c.JSON(201, gin.H{"user": u})
+	}
 }
