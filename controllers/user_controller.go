@@ -27,8 +27,6 @@ func (pc Controller) SignUp(c *gin.Context) {
 
 	tokenString, err := token.SignedString([]byte(secret))
 
-	fmt.Println(token)
-
 	if err != nil {
 		c.AbortWithStatus(500)
 		fmt.Println(err)
@@ -41,12 +39,36 @@ func (pc Controller) Login(c *gin.Context) {
 	fmt.Println("exec login function")
 
 	var s models.UserModel
-	u, err := s.GetByName("ikeyu0806")
+
+	param_name := c.PostForm("name")
+	param_password := c.PostForm("password")
+
+	u, err := s.GetByName(param_name)
 
 	if err != nil {
 		c.AbortWithStatus(500)
 		fmt.Println(err)
-	} else {
-		c.JSON(201, gin.H{"user": u})
+	}
+
+	if (u.Name == param_name && u.Password == param_password) {
+		fmt.Println("certify")
+
+		secret := "safgvrebwabrq"
+
+		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+			"admin": true,
+			"name":   "ikegaya",
+			"iat": time.Now(),
+			"exp": time.Now().Add(time.Hour * 24).Unix(),
+		})
+
+		tokenString, err := token.SignedString([]byte(secret))
+
+		if err != nil {
+			c.AbortWithStatus(500)
+			fmt.Println(err)
+		} else {
+			c.JSON(201, gin.H{"user": u, "token": tokenString})
+		}
 	}
 }
