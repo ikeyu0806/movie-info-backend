@@ -42,9 +42,11 @@ func router() *gin.Engine {
 		MaxAge: 24 * time.Hour,
 	}))
 
-	user_ctrl := user.Controller{}
+	user_ctrl := controllers.UserController{}
+	review_ctrl := controllers.ReviewController{}
 	r.POST("/signup", user_ctrl.SignUp)
 	r.POST("/login", user_ctrl.Login)
+	r.POST("/review/create", review_ctrl.Create)
 
 	return r
 }
