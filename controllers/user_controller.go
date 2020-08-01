@@ -1,4 +1,4 @@
-package user
+package controllers
 
 import (
 	"time"
@@ -8,9 +8,9 @@ import (
 	"github.com/ikeyu0806/movie-info-backend/models"
 )
 
-type Controller struct{}
+type UserController struct{}
 
-func (pc Controller) SignUp(c *gin.Context) {
+func (pc UserController) SignUp(c *gin.Context) {
 	fmt.Println("exec signup function")
 
 	var s models.UserModel
@@ -35,7 +35,7 @@ func (pc Controller) SignUp(c *gin.Context) {
 	}
 }
 
-func (pc Controller) Login(c *gin.Context) {
+func (pc UserController) Login(c *gin.Context) {
 	fmt.Println("exec login function")
 
 	var s models.UserModel
