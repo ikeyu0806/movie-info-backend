@@ -35,3 +35,14 @@ func (m ReviewModel) CreateReview(c *gin.Context) (Review, error) {
 	return r, nil
 }
 
+func (m ReviewModel) FindByMovieId(c *gin.Context) (Review, error) {
+	db := db.GetDB()
+
+	var r Review
+
+	movie_id := c.Param("movie_id")
+
+	db.Where("movie_id = ?", movie_id).Find(&r)
+
+	return r, nil
+}
