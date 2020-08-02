@@ -35,10 +35,10 @@ func (m ReviewModel) CreateReview(c *gin.Context) (Review, error) {
 	return r, nil
 }
 
-func (m ReviewModel) FindByMovieId(c *gin.Context) (Review, error) {
+func (m ReviewModel) FindByMovieId(c *gin.Context) ([]Review, error) {
 	db := db.GetDB()
 
-	var r Review
+	var r []Review
 
 	movie_id := c.Param("movie_id")
 
