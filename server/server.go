@@ -47,6 +47,7 @@ func router() *gin.Engine {
 	r.POST("/signup", user_ctrl.SignUp)
 	r.POST("/login", user_ctrl.Login)
 	r.POST("/review/create", review_ctrl.Create)
+	r.GET("/review/:movie_id", review_ctrl.FindByMovieID)
 
 	return r
 }

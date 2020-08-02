@@ -57,7 +57,7 @@ func (pc UserController) Login(c *gin.Context) {
 
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 			"admin": true,
-			"name":   "ikegaya",
+			"name": "ikegaya",
 			"iat": time.Now(),
 			"exp": time.Now().Add(time.Hour * 24).Unix(),
 		})
