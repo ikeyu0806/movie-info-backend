@@ -2,19 +2,23 @@ package db
 
 import (
 	"testing"
+	"fmt"
 )
 
 func TestGormConnect(t *testing.T) {
-	db := gormConnect()
-	if db == nil {
+	db, err := gormConnect()
+
+	fmt.Println(db)
+	if err != nil {
 		t.Fatal("failed test")
 	}
 }
 
 func TestGetDB(t *testing.T) {
-	db := GetDB()
+	db, err := GetDB()
 
-	if db == nil {
+	fmt.Println(db)
+	if err != nil {
 		t.Fatal("failed test")
 	}
 }

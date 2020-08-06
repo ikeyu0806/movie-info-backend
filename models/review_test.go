@@ -8,7 +8,7 @@ import (
 )
 
 func TestFindByMovieID(t *testing.T) {
-	req, _ := http.NewRequest("GET", "/reviews/454626", nil)
+	req, _ := http.NewRequest("GET", "/reviews/1", nil)
 
 	var context *gin.Context
 	context = &gin.Context{Request: req}
@@ -18,6 +18,7 @@ func TestFindByMovieID(t *testing.T) {
 
 	fmt.Println(result)
 	if err != nil {
+		fmt.Println(err)
 		t.Fatal(err)
 	}
 }
