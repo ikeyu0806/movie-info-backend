@@ -17,7 +17,7 @@ type User struct {
 type UserModel struct{}
 
 func (m UserModel) CreateUser(c *gin.Context) (User, error) {
-	db := db.GetDB()
+	db, err := db.GetDB()
 
 	var u User
 
@@ -29,16 +29,16 @@ func (m UserModel) CreateUser(c *gin.Context) (User, error) {
 			return u, err
 	}
 
-	return u, nil
+	return u, err
 }
 
 func (m UserModel) GetByName(name string) (User, error) {
-	db := db.GetDB()
+	db, err := db.GetDB()
 	var u User
 
 	if err := db.Where("name = ?", name).First(&u).Error; err != nil {
 			return u, err
 	}
 
-	return u, nil
+	return u, err
 }

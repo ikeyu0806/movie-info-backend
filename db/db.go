@@ -17,7 +17,7 @@ type User struct {
 	Password  string
 }
 
-func gormConnect() *gorm.DB {
+func gormConnect() (*gorm.DB, error) {
   DBMS     := "mysql"
   USER     := "root"
   PASS     := "pass"
@@ -31,15 +31,20 @@ func gormConnect() *gorm.DB {
     panic(err.Error())
   }
   log.Println("connect mysql")
-  return db
+  return db, err
 }
 
 func Init() {
-  db := gormConnect()
+  db, err := gormConnect()
+
+  if err != nil {
+    panic(err.Error())
+  }
+
   defer db.Close()
 } 
 
-func GetDB() *gorm.DB {
+func GetDB() (*gorm.DB, error) {
   DBMS     := "mysql"
   USER     := "root"
   PASS     := "pass"
@@ -53,5 +58,5 @@ func GetDB() *gorm.DB {
     panic(err.Error())
   }
   log.Println("connect mysql")
-  return db
+  return db, err
 }

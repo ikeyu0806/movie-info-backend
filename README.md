@@ -20,5 +20,10 @@ docker-compose exec golang goose create createReviews sql
 docker-compose exec golang goose up
 ```
 
+テスト実行
+```
+go test github.com/ikeyu0806/...
+```
+
 ## Author
 Yuki Ikegaya
