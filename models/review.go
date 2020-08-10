@@ -15,6 +15,7 @@ type Review struct {
 	Comment             string `json:"comment"`
 	Score               int  `json:"score"`
 	UserId              int  `json:"user_id"`
+	User                User `gorm:"foreignkey:UserId"`
 }
 
 type ReviewModel struct{}
@@ -43,7 +44,7 @@ func (m ReviewModel) FindByMovieId(c *gin.Context) ([]Review, error) {
 
 	movie_id := c.Param("movie_id")
 
-	db.Debug().Where("movie_id = ?", movie_id).Find(&r)
+	db.Preload("User").Debug().Where("movie_id = ?", movie_id).Find(&r)
 
 	defer db.Close()
 	return r, err
