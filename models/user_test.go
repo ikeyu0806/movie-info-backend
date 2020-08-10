@@ -29,7 +29,7 @@ func TestGetByName(t *testing.T) {
 	name := "test"
 	
 	var r UserModel
-	result, err := r.GetByName(name)
+	result, err := r.FindByName(name)
 
 	fmt.Println(result)
 	if err != nil {

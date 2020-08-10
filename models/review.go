@@ -14,6 +14,7 @@ type Review struct {
 	PublicId            int  `json:"public_id"`
 	Comment             string `json:"comment"`
 	Score               int  `json:"score"`
+	UserId              int  `json:"user_id"`
 }
 
 type ReviewModel struct{}

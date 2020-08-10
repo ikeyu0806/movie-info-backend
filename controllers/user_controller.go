@@ -14,8 +14,8 @@ type UserController struct{}
 func (pc UserController) SignUp(c *gin.Context) {
 	fmt.Println("exec signup function")
 
-	var s models.UserModel
-	s.CreateUser(c)
+	var m models.UserModel
+	u, err := m.CreateUser(c)
 
 	secret := "safgvrebwabrq"
 
@@ -32,7 +32,7 @@ func (pc UserController) SignUp(c *gin.Context) {
 		c.AbortWithStatus(500)
 		fmt.Println(err)
 	} else {
-		c.JSON(201, gin.H{"token": tokenString})
+		c.JSON(201, gin.H{"token": tokenString, "user_id": u.ID})
 	}
 }
 
@@ -44,7 +44,7 @@ func (pc UserController) Login(c *gin.Context) {
 	param_name := c.PostForm("name")
 	param_password := c.PostForm("password")
 
-	u, err := s.GetByName(param_name)
+	u, err := s.FindByName(param_name)
 
 	if err != nil {
 		c.AbortWithStatus(500)
@@ -71,9 +71,19 @@ func (pc UserController) Login(c *gin.Context) {
 			c.AbortWithStatus(500)
 			fmt.Println(err)
 		} else {
-			c.JSON(201, gin.H{"user": u, "token": tokenString})
+			c.JSON(201, gin.H{"user": u, "token": tokenString, "user_id": u.ID})
 		}
 	} else {
 		c.JSON(401, gin.H{"user": u})
 	}
+}
+
+func (pc UserController) FindByName(c *gin.Context) {
+	fmt.Println("exec user find_by_movie_name function")
+
+	var u models.UserModel
+
+	result, err := u.FindByName(c.Param("name"))
+	fmt.Println(err)
+	c.JSON(200, result)
 }
