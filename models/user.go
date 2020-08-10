@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/ikeyu0806/movie-info-backend/db"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type User struct {
@@ -23,11 +24,19 @@ func (m UserModel) CreateUser(c *gin.Context) (User, error) {
 	var u User
 
 	if err := c.ShouldBindJSON(&u); err != nil {
-			return u, err
+		return u, err
 	}
 
+	hash, err := bcrypt.GenerateFromPassword([]byte(u.Password), bcrypt.DefaultCost)
+
+	if err != nil {
+		return u, err
+	}
+
+	u.Password = string(hash)
+
 	if err := db.Create(&u).Error; err != nil {
-			return u, err
+		return u, err
 	}
 
 	return u, err
@@ -38,7 +47,7 @@ func (m UserModel) FindByName(name string) (User, error) {
 	var u User
 
 	if err := db.Where("name = ?", name).First(&u).Error; err != nil {
-			return u, err
+		return u, err
 	}
 
 	return u, err

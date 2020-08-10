@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/ikeyu0806/movie-info-backend/models"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type UserController struct{}
@@ -50,7 +51,9 @@ func (pc UserController) Login(c *gin.Context) {
 		fmt.Println(err)
 	}
 
-	if (u.Name == param_name && u.Password == param_password) {
+	match_pass := bcrypt.CompareHashAndPassword([]byte(u.Password), []byte(param_password)) == nil
+
+	if (u.Name == param_name && match_pass) {
 		fmt.Println("certify")
 
 		secret := "safgvrebwabrq"
@@ -70,6 +73,8 @@ func (pc UserController) Login(c *gin.Context) {
 		} else {
 			c.JSON(201, gin.H{"user": u, "token": tokenString, "user_id": u.ID})
 		}
+	} else {
+		c.JSON(401, gin.H{"user": u})
 	}
 }
 
