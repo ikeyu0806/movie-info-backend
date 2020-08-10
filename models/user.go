@@ -32,7 +32,7 @@ func (m UserModel) CreateUser(c *gin.Context) (User, error) {
 	return u, err
 }
 
-func (m UserModel) GetByName(name string) (User, error) {
+func (m UserModel) FindByName(name string) (User, error) {
 	db, err := db.GetDB()
 	var u User
 

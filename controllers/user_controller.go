@@ -43,7 +43,7 @@ func (pc UserController) Login(c *gin.Context) {
 	param_name := c.PostForm("name")
 	param_password := c.PostForm("password")
 
-	u, err := s.GetByName(param_name)
+	u, err := s.FindByName(param_name)
 
 	if err != nil {
 		c.AbortWithStatus(500)
@@ -71,4 +71,14 @@ func (pc UserController) Login(c *gin.Context) {
 			c.JSON(201, gin.H{"user": u, "token": tokenString})
 		}
 	}
+}
+
+func (pc UserController) FindByName(c *gin.Context) {
+	fmt.Println("exec user find_by_movie_name function")
+
+	var u models.UserModel
+
+	result, err := u.FindByName(c.Param("name"))
+	fmt.Println(err)
+	c.JSON(200, result)
 }
