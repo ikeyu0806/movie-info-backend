@@ -13,8 +13,8 @@ type UserController struct{}
 func (pc UserController) SignUp(c *gin.Context) {
 	fmt.Println("exec signup function")
 
-	var s models.UserModel
-	s.CreateUser(c)
+	var m models.UserModel
+	u, err := m.CreateUser(c)
 
 	secret := "safgvrebwabrq"
 
@@ -31,7 +31,7 @@ func (pc UserController) SignUp(c *gin.Context) {
 		c.AbortWithStatus(500)
 		fmt.Println(err)
 	} else {
-		c.JSON(201, gin.H{"token": tokenString})
+		c.JSON(201, gin.H{"token": tokenString, "user_id": u.ID})
 	}
 }
 
@@ -68,7 +68,7 @@ func (pc UserController) Login(c *gin.Context) {
 			c.AbortWithStatus(500)
 			fmt.Println(err)
 		} else {
-			c.JSON(201, gin.H{"user": u, "token": tokenString})
+			c.JSON(201, gin.H{"user": u, "token": tokenString, "user_id": u.ID})
 		}
 	}
 }
