@@ -10,10 +10,11 @@ import (
 
 type User struct {
 	gorm.Model
-	ID				int    `json:"id"`
+	// ID				int    `json:"id"`
 	Name      string `json:"name"`
 	Email     string `json:"email"`
 	Password  string `json:"password"`
+	Reviews    []Review `gorm:"foreignkey:UserId"`
 }
 
 type UserModel struct{}
