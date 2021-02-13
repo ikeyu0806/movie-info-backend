@@ -11,12 +11,6 @@ var (
   err error
 )
 
-type User struct {
-	ID        uint
-	Name      string
-	Password  string
-}
-
 func GetDB() (*gorm.DB, error) {
   DBMS     := "mysql"
   USER     := "root"
