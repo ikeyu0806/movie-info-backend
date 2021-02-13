@@ -1,0 +1,16 @@
+driver: mysql
+development:
+  user: root
+  password: "pass"
+  protocol: "tcp(movie_mysql:3306)"
+  db_name: "movie_info"
+production:
+  user:
+  password:
+  protocol:
+  db_name:
+test:
+  user: root
+  password: "pass"
+  protocol: "tcp(movie_mysql:3306)"
+  db_name: "movie_info"
