@@ -1,6 +1,6 @@
 FROM golang:latest
 
-ENV SERVICE_ENV development
+ENV SERVICE_ENV production
 
 RUN mkdir -p -m 775 /workspace/golang_backend
 RUN go get -u bitbucket.org/liamstask/goose/cmd/goose
