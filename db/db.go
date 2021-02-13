@@ -3,7 +3,6 @@ package db
 import (
     "log"
     "io/ioutil"
-    "fmt"
     "github.com/jinzhu/gorm"
     _ "github.com/jinzhu/gorm/dialects/mysql"
     "gopkg.in/yaml.v2"
@@ -27,14 +26,11 @@ func GetDB() (*gorm.DB, error) {
       log.Fatal(err)
   }
 
-  fmt.Println("!!!!!!!!!!!")
-  fmt.Printf("%v\n", m)
-
   DBMS     := "mysql"
-  USER     := "root"
-  PASS     := "pass"
-  PROTOCOL := "tcp(movie_mysql:3306)"
-  DBNAME   := "movie_info"
+  USER     := m["development"].(map[interface {}]interface {})["user"].(string)
+  PASS     := m["development"].(map[interface {}]interface {})["password"].(string)
+  PROTOCOL := m["development"].(map[interface {}]interface {})["protocol"].(string)
+  DBNAME   := m["development"].(map[interface {}]interface {})["db_name"].(string)
 
   CONNECT := USER+":"+PASS+"@"+PROTOCOL+"/"+DBNAME+"?parseTime=true"
   db,err := gorm.Open(DBMS, CONNECT)
