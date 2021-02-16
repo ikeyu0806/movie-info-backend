@@ -4,13 +4,14 @@ development:
   password: "pass"
   protocol: "tcp(movie_mysql:3306)"
   db_name: "movie_info"
+# ここは現状手動
 production:
-  user:
-  password:
-  protocol:
-  db_name:
+  user: root
+  password: xxxx
+  protocol: xxxx.xxxx.ap-northeast-1.rds.amazonaws.com
+  db_name: movie_info
 test:
   user: root
   password: "pass"
   protocol: "tcp(movie_mysql:3306)"
-  db_name: "movie_info"
+  db_name: "movie_info_test"
