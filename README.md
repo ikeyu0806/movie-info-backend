@@ -34,6 +34,16 @@ goose の設定ファイルは`db/dbconf.yml`です。
 go test github.com/ikeyu0806/...
 ```
 
+## デプロイ準備
+
+1. `db/db_connect.yml`に RDS の情報を追記
+
+2. `docker build -t movie-info-backend -f ./Dockerfile.production .`
+
+3. できたイメージを ECR に push
+
+4. 残りは terraform で構築。1-3 も自動化したいが未対応
+
 ## Author
 
 Yuki Ikegaya
