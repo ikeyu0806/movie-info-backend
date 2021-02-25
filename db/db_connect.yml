@@ -6,10 +6,10 @@ development:
   db_name: "movie_info"
 # ここは現状手動
 production:
-  user: root
-  password: xxxx
-  protocol: xxxx.xxxx.ap-northeast-1.rds.amazonaws.com
-  db_name: movie_info
+  user: admin
+  password: "xxxxxx"
+  protocol: "tcp(database-1.xxxxxx.ap-northeast-1.rds.amazonaws.com:3306)"
+  db_name: "database-1"
 test:
   user: root
   password: "pass"

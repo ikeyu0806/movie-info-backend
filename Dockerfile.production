@@ -9,5 +9,5 @@ WORKDIR /workspace/golang_backend
 
 ADD ./ /workspace/golang_backend
 
-RUN ["go", "build"]
-CMD ["/workspace/golang_backend/main.go"]
+RUN ["go", "build", "main.go"]
+CMD ["./main"]

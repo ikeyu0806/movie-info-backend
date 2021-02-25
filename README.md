@@ -24,6 +24,12 @@ docker-compose exec golang goose create createReviews sql
 docker-compose exec golang goose up
 ```
 
+production 環境
+
+```
+goose -env production up
+```
+
 goose の設定ファイルは`db/dbconf.yml`です。
 
 ## test
@@ -36,13 +42,19 @@ go test github.com/ikeyu0806/...
 
 ## デプロイ準備
 
-1. `db/db_connect.yml`に RDS の情報を追記
+1. `db/db_connect.yml`と`db/dbconf.yml`に RDS の情報を追記
 
 2. `docker build -t movie-info-backend -f ./Dockerfile.production .`
 
 3. できたイメージを ECR に push
 
 4. 残りは terraform で構築。1-3 も自動化したいが未対応
+
+5. prodution での migration は現状手動
+
+### ローカルでの production 用 docker image の確認
+
+`docker run -it {image_id} sh`
 
 ## Author
 

@@ -3,4 +3,4 @@ development:
   open: tcp:movie_mysql:3306*movie_info/root/pass
 production:
   driver: mymysql
-  open:
+  open: tcp:database-1.xxxxxx.ap-northeast-1.rds.amazonaws.com:3306*database-1/admin/xxxxx
