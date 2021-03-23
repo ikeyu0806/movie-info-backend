@@ -44,6 +44,8 @@ func router() *gin.Engine {
 
 	user_ctrl := controllers.UserController{}
 	review_ctrl := controllers.ReviewController{}
+	running_ctrl := controllers.RunningController{}
+	r.GET("/is_running", running_ctrl.IsRunning)
 	r.POST("/signup", user_ctrl.SignUp)
 	r.POST("/login", user_ctrl.Login)
 	r.GET("/user/:name", user_ctrl.FindByName)

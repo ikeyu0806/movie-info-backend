@@ -1,3 +1,6 @@
 development:
     driver: mymysql
-    open: tcp:movie_mysql:3306*movie_info/root/pass
+    open: tcp:$DB_HOST*$DB_NAME/$DB_USER/$DB_PASSWORD
+production:
+    driver: mymysql
+    open: tcp:$DB_HOST*movieInfo/$DB_USER/$DB_PASSWORD
