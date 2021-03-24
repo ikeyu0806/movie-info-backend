@@ -12,7 +12,14 @@ func (pc ReviewController) Create(c *gin.Context) {
 	fmt.Println("exec review create function")
 
 	var r models.ReviewModel
-	r.CreateReview(c)
+	result, err := r.CreateReview(c)
+	if err != nil {
+		fmt.Println(err)
+		c.JSON(200, result)
+	} else {
+		c.JSON(500, err)
+	}
+	c.JSON(200, result)
 }
 
 func (pc ReviewController) FindByMovieID(c *gin.Context) {
