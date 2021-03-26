@@ -14,6 +14,7 @@ require (
 	github.com/motemen/go-quickfix v0.0.0-20200118031250-2a6e54e79a50 // indirect
 	github.com/motemen/gore v0.5.0 // indirect
 	github.com/peterh/liner v1.2.0 // indirect
+	github.com/rubenv/sql-migrate v0.0.0-20210215143335-f84234893558 // indirect
 	golang.org/x/crypto v0.0.0-20200728195943-123391ffb6de
 	golang.org/x/text v0.3.3 // indirect
 	golang.org/x/tools v0.0.0-20200809012840-6f4f008689da // indirect
