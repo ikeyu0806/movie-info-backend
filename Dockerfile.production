@@ -1,11 +1,15 @@
 FROM golang:latest
 
 RUN mkdir -p -m 775 /workspace/golang_backend
-RUN go get -u bitbucket.org/liamstask/goose/cmd/goose
+RUN curl https://s3.ap-northeast-1.amazonaws.com/amazon-ssm-ap-northeast-1/latest/debian_amd64/amazon-ssm-agent.deb -o /tmp/amazon-ssm-agent.deb \
+    && dpkg -i /tmp/amazon-ssm-agent.deb \
+    && cp /etc/amazon/ssm/seelog.xml.template /etc/amazon/ssm/seelog.xml
 
 WORKDIR /workspace/golang_backend
 
 ADD ./ /workspace/golang_backend
+
+RUN go get -v github.com/rubenv/sql-migrate/...
 
 RUN ["go", "build", "main.go"]
 CMD ["./main"]

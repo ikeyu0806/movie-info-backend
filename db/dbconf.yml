@@ -1,6 +1,0 @@
-development:
-    driver: mymysql
-    open: tcp:$DB_HOST*$DB_NAME/$DB_USER/$DB_PASSWORD
-production:
-    driver: mymysql
-    open: tcp:$DB_HOST*movieInfo/$DB_USER/$DB_PASSWORD

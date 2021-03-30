@@ -8,16 +8,19 @@
 
 `docker-compose -f ./docker-compose.yml up`
 
+
+`docker exec -it golang_backend bash`
+
 ## DB Migration
 
 マイグレーションファイル作成
 ```bash
-docker-compose exec golang goose create createReviews sql
+docker-compose exec golang sql-migrate new createReviews sql
 ```
 
 マイグレーション実行
 ```bash
-docker-compose exec golang goose up
+docker-compose exec golang sql-migrate up
 ```
 
 テスト実行

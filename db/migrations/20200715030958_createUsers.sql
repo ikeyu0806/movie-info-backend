@@ -1,5 +1,5 @@
 
--- +goose Up
+-- +migrate Up
 -- SQL in section 'Up' is executed when this migration is applied
 CREATE TABLE users (
     id integer AUTO_INCREMENT,
@@ -11,6 +11,6 @@ CREATE TABLE users (
     PRIMARY KEY(id)
 );
 
--- +goose Down
+-- +migrate Down
 -- SQL section 'Down' is executed when this migration is rolled back
 DROP TABLE users;
