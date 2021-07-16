@@ -1,16 +1,24 @@
 package server
 
 import (
+	"os"
 	"time"
-	"github.com/gin-gonic/gin"
+
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 	"github.com/ikeyu0806/movie-info-backend/controllers"
 )
 
 func Init() {
 	r := router()
 
-	r.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	port = ":" + port
+	r.Run(port)
 }
 
 func router() *gin.Engine {
@@ -27,7 +35,7 @@ func router() *gin.Engine {
 		},
 
 		AllowHeaders: []string{
-			"Access-Control-Allow-Origin",			
+			"Access-Control-Allow-Origin",
 			"Access-Control-Allow-Headers",
 			"Content-Type",
 			"Content-Length",
