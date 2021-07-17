@@ -28,5 +28,16 @@ docker-compose exec golang sql-migrate up
 go test github.com/ikeyu0806/...
 ```
 
+## Deploy
+herokuにデプロイしています。
+
+```
+git push heroku master
+```
+
+また、AWS ECSでも実行できるようterraformを用意しています。
+
+https://github.com/ikeyu0806/movie-backend-terraform
+
 ## Author
 Yuki Ikegaya
