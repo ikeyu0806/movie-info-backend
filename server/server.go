@@ -46,6 +46,7 @@ func router() *gin.Engine {
 
 		AllowOrigins: []string{
 			"http://localhost:3001",
+			"https://movie-info-frontend.vercel.app",
 		},
 		MaxAge: 24 * time.Hour,
 	}))
